@@ -11,8 +11,6 @@ public class Id {
     if (length() % 2 != 0) return true;
 
     int subStrLen = length() / 2;
-    if (length() % subStrLen != 0) return true;
-
     return !hasRepeatingSubstring(subStrLen);
   }
 
@@ -30,6 +28,8 @@ public class Id {
   }
 
   private boolean hasRepeatingSubstring(int subStrLen) {
+    if (length() % subStrLen != 0) return false;
+
     int i = 0;
     int numSubStrings = length() / subStrLen;
 
