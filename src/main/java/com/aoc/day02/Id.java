@@ -16,6 +16,15 @@ public class Id {
     return !hasRepeatingSubstring(subStrLen);
   }
 
+  public boolean isValidComplex() {
+    for (int subStrLen = 1; subStrLen <= length() / 2; subStrLen++) {
+      if (length() % subStrLen != 0) continue;
+      if (hasRepeatingSubstring(subStrLen)) return false;
+    }
+
+    return true;
+  }
+
   public int length() {
     return id.length();
   }

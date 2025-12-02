@@ -19,7 +19,7 @@ public class Solution {
 
         for (long i = start; i <= end; i++) {
           Id id = new Id(String.valueOf(i));
-          if (id.isValidSimple()) continue;
+          if (id.isValidComplex()) continue;
 
           res += i;
         }
