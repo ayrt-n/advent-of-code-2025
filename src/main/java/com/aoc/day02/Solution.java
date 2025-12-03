@@ -1,6 +1,7 @@
 package com.aoc.day02;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -24,9 +25,8 @@ public class Solution {
           res += i;
         }
       }
-    } catch (Exception e) {
-      e.printStackTrace();
-      System.out.println("There was an error while trying to read from the day01 input");
+    } catch (IOException e) {
+      System.out.println("There was an error while trying to read from the day02 input");
       return;
     }
 
