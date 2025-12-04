@@ -9,13 +9,13 @@ import java.util.List;
 
 public class Solution {
   public static void main(String[] args) {
-    List<String> paperList = new ArrayList<>();
+    List<char[]> paperList = new ArrayList<>();
     
     try (BufferedReader reader = Files.newBufferedReader(Paths.get("inputs/day04.txt"))) {
       String line;
 
       while ((line = reader.readLine()) != null) {
-        paperList.add(line);
+        paperList.add(line.toCharArray());
       }
     } catch (IOException e) {
       System.out.println("There was an error while trying to read from the day04 input");
@@ -23,6 +23,6 @@ public class Solution {
     }
 
     PaperRolls paperRolls = new PaperRolls(paperList);
-    System.out.println("The code is " + paperRolls.accessible());
+    System.out.println("The code is " + paperRolls.dynamicallyAccessible());
   }
 }

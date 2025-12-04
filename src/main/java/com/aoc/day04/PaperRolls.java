@@ -3,9 +3,9 @@ package com.aoc.day04;
 import java.util.List;
 
 public class PaperRolls {
-  private List<String> grid;
+  private List<char[]> grid;
 
-  public PaperRolls(List<String> grid) {
+  public PaperRolls(List<char[]> grid) {
     this.grid = grid;
   }
 
@@ -16,6 +16,27 @@ public class PaperRolls {
       for (int c = 0; c < columns(r); c++) {
         if (containsRoll(r, c) && isAccessible(r, c)) {
           count++;
+        }
+      }
+    }
+
+    return count;
+  }
+
+  public int dynamicallyAccessible() {
+    int count = 0;
+    boolean removedFlag = true;
+
+    while (removedFlag) {
+      removedFlag = false;
+
+      for (int r = 0; r < rows(); r++) {
+        for (int c = 0; c < columns(r); c++) {
+          if (containsRoll(r, c) && isAccessible(r, c)) {
+            count++;
+            removeRoll(r, c);
+            removedFlag = true;
+          }
         }
       }
     }
@@ -47,10 +68,14 @@ public class PaperRolls {
     return false;
   }
 
+  private void removeRoll(int row, int col) {
+    grid.get(row)[col] = '.';
+  }
+
   private boolean containsRoll(int row, int col) {
     if (outOfBounds(row, col)) return false;
 
-    return grid.get(row).charAt(col) == '@';
+    return grid.get(row)[col] == '@';
   }
 
   private int rows() {
@@ -58,7 +83,7 @@ public class PaperRolls {
   }
 
   private int columns(int row) {
-    return grid.get(row).length();
+    return grid.get(row).length;
   }
 
   public static void main(String[] args) {
