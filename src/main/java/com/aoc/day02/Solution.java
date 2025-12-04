@@ -30,8 +30,6 @@ public class Solution {
       return;
     }
 
-    System.out.println((int) Math.ceil(7 / 2.0));
-
     System.out.println("The number of invalid ids: " + res);
   }
 }
