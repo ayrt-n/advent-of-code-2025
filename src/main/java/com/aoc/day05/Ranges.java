@@ -67,6 +67,16 @@ public class Ranges {
     ranges.add(newRange);
   }
 
+  public long totalInRanges() {
+    long sum = 0;
+
+    for (Range range : ranges) {
+      sum += range.valueInRange();
+    }
+
+    return sum;
+  }
+
   public String toString() {
     return ranges.toString();
   }

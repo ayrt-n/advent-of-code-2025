@@ -24,8 +24,6 @@ public class Solution {
         ranges.addRange(rangeStart, rangeEnd);
       }
 
-      System.out.println(ranges);
-
       while(true) {
         line = reader.readLine();
         if (line == null) break;
@@ -42,5 +40,6 @@ public class Solution {
     }
     
     System.out.println("Fresh ingredient count: " + freshIngredients);
+    System.out.println("Number of potential fresh ingredients: " + ranges.totalInRanges());
   }
 }

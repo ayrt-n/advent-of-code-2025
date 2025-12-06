@@ -41,6 +41,10 @@ public class Range implements Comparable<Long> {
     return (num < start) ? -1 : 1;
   }
 
+  public long valueInRange() {
+    return (end - start + 1);
+  }
+
   public String toString() {
     return start + "-" + end;
   }
