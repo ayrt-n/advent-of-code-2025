@@ -1,6 +1,6 @@
 package com.aoc.day05;
 
-public class Range {
+public class Range implements Comparable<Long> {
   private long start;
   private long end;
 
@@ -31,6 +31,14 @@ public class Range {
 
   public boolean contains(Range range) {
     return (range.start >= start && range.end <= end);
+  }
+
+  public int compareTo(Long num) {
+    if (start <= num && end >= num) {
+      return 0;
+    }
+
+    return (num < start) ? -1 : 1;
   }
 
   public String toString() {

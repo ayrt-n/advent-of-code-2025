@@ -10,6 +10,29 @@ public class Ranges {
     this.ranges = new ArrayList<>();
   }
 
+  public boolean containsNumber(Long num) {
+    int left = 0;
+    int right = ranges.size() - 1;
+
+    while (left <= right) {
+      int mid = (left + right) / 2;
+      Range midRange = ranges.get(mid);
+      int compValue = midRange.compareTo(num);
+
+      if (compValue == 0) {
+        return true;
+      }
+
+      if (compValue < 0) {
+        right = mid - 1;
+      } else {
+        left = mid + 1;
+      }
+    }
+
+    return false;
+  }
+
   public void addRange(long start, long end) {
     Range newRange = new Range(start, end);
 
@@ -17,7 +40,7 @@ public class Ranges {
       Range existingRange = ranges.get(i);
 
       if (newRange.getEnd() < existingRange.getStart()) {
-        ranges.add(0, newRange);
+        ranges.add(i, newRange);
         return;
       }
 

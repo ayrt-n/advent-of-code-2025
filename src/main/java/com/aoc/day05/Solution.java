@@ -4,14 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Solution {
   public static void main(String[] args) {
     Ranges ranges = new Ranges();
+    int freshIngredients = 0;
 
-    try (BufferedReader reader = Files.newBufferedReader(Paths.get("inputs/day05-test.txt"))) {
+    try (BufferedReader reader = Files.newBufferedReader(Paths.get("inputs/day05.txt"))) {
       String line;
       
       while (true) {
@@ -25,9 +24,16 @@ public class Solution {
         ranges.addRange(rangeStart, rangeEnd);
       }
 
+      System.out.println(ranges);
+
       while(true) {
         line = reader.readLine();
         if (line == null) break;
+
+        long ingredient = Long.parseLong(line);
+        if (ranges.containsNumber(ingredient)) {
+          freshIngredients++;
+        }
       }
 
     } catch (IOException e) {
@@ -35,6 +41,6 @@ public class Solution {
       return;
     }
     
-    System.out.println(ranges);
+    System.out.println("Fresh ingredient count: " + freshIngredients);
   }
 }
